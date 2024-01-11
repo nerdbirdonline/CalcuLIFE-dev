@@ -12,7 +12,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 1080px; /* Adjust the width of the square */
+            width: 1920px; /* Adjust the width of the square */
             height: 1200px; /* Adjust the height of the square */
             background-color: white;
             z-index: -1; /* Set a higher z-index to place the square behind other content */
