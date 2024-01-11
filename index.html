@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>CalcuLIFE</title>
+</head>
+<body>
+    <video autoplay muted loop>
+        <source src="/Users/renxeli/Downloads/ELI/Income Streams/Coding PRoject/CalcuLife/video1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="black-square"></div>
+    <div class="content">
+        <h1>CalcuLIFE</h1>
+
+        <div class="personInputs">
+            <label for="name1">Person 1 Name: </label>
+            <input type="text" id="name1" placeholder="Enter name">
+            <label for="salary1">Salary PCM (£): </label>
+            <input type="number" id="salary1" placeholder="Enter salary">
+            <label for="percentage1">Contribution (%): </label>
+            <input type="number" id="percentage1" placeholder="Enter percentage">
+        </div>
+
+        <div class="personInputs">
+            <label for="name2">Person 2 Name: </label>
+            <input type="text" id="name2" placeholder="Enter name">
+            <label for="salary2">Salary PCM (£): </label>
+            <input type="number" id="salary2" placeholder="Enter salary">
+            <label for="percentage1">Contribution (%): </label>
+            <input type="number" id="percentage2" placeholder="Enter percentage">
+        </div>
+
+        <div id="billInputs">
+            <label for="bill1">Rent PCM (£): </label>
+            <input type="number" class="billAmount" placeholder="Enter rent">
+        </div>
+
+        <button onclick="addBillInput()">Add Another Bill</button>
+        <button onclick="calculateExpense()">Calculate</button>
+
+        <h2 id="resultTitle">Result:</h2>
+        <div id="result" style="display:none;"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

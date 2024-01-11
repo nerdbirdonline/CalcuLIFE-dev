@@ -1,0 +1,137 @@
+        body {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Viewport height */
+            background-color: #f0f0f0; /* Optional: Set a background color for the body */
+        }
+
+        .black-square {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1080px; /* Adjust the width of the square */
+            height: 1200px; /* Adjust the height of the square */
+            background-color: white;
+            z-index: -1; /* Set a higher z-index to place the square behind other content */
+            opacity: 0.8; /* Set the opacity to 80% */
+        }
+
+        .content {
+            z-index: 2; /* Set a lower z-index to place the content on top of the square */
+        }
+
+        img {
+            max-width: 60%; /* Make sure the image doesn't exceed its container */
+            height: auto; /* Maintain aspect ratio */
+            width: 200px; /* Set the desired width for the image */
+            /* height: 200px; */ /* Optionally, set the height if you want a specific height */
+        }
+
+
+
+        body {
+            background-color: black;
+            color: black;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #00ffcc;
+        }
+
+        label {
+            margin: 10px 0;
+            display: block;
+        }
+
+        input {
+            margin: 5px;
+            padding: 5px;
+            width: 200px;
+        }
+
+        button {
+            background-color: #00ffcc;
+            color: black;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        #billInputs {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .personInputs {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .personInputs input {
+            margin: 5px;
+            padding: 5px;
+            width: 150px;
+        }
+
+        .billName,
+        .billAmount {
+            margin: 5px;
+            padding: 5px;
+            width: 150px;
+        }
+
+        #result {
+            background-color: #00ffcc;
+            color: black;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        /* Additional style for hiding the result initially */
+        #resultTitle {
+            display: none;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Hide default browser scrollbars */
+        }
+
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Maintain aspect ratio and cover entire viewport */
+            z-index: -1; /* Place the video behind other content */
+            opacity: 0.8; /* Set the opacity to 80% */
+            
+        }
+
+        /* Optional: Add additional styles for content on top of the video */
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            font-size: 2em;
+        }
+
+    
+
+    
