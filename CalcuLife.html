@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalcuLIFE</title>
+    <style>
+
+        body {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Viewport height */
+            background-color: #f0f0f0; /* Optional: Set a background color for the body */
+        }
+
+        .black-square {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1080px; /* Adjust the width of the square */
+            height: 1200px; /* Adjust the height of the square */
+            background-color: black;
+            z-index: -1; /* Set a higher z-index to place the square behind other content */
+            opacity: 0.8; /* Set the opacity to 80% */
+        }
+
+        .content {
+            z-index: 2; /* Set a lower z-index to place the content on top of the square */
+        }
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #00ffcc;
+        }
+
+        label {
+            margin: 10px 0;
+            display: block;
+        }
+
+        input {
+            margin: 5px;
+            padding: 5px;
+            width: 200px;
+        }
+
+        button {
+            background-color: #00ffcc;
+            color: black;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        #billInputs {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .personInputs {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .personInputs input {
+            margin: 5px;
+            padding: 5px;
+            width: 150px;
+        }
+
+        .billName,
+        .billAmount {
+            margin: 5px;
+            padding: 5px;
+            width: 150px;
+        }
+
+
+       /* ... (your existing CSS) ... */
+
+        #result {
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        /* Additional style for hiding the result initially */
+        #resultTitle {
+            display: none;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Hide default browser scrollbars */
+        }
+
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Maintain aspect ratio and cover entire viewport */
+            z-index: -1; /* Place the video behind other content */
+            opacity: 0.8; /* Set the opacity to 80% */
+            
+        }
+
+        /* Optional: Add additional styles for content on top of the video */
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            font-size: 2em;
+        }
+
+    
+
+    </style>
+</head>
+
+
+<body>
+<!-- Video element with a sample video source -->
+<video autoplay muted loop>
+    <source src="/Users/renxeli/Downloads/ELI/Income Streams/Coding PRoject/CalcuLife/video1.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+<div class="black-square"></div>
+    <h1>CalcuLIFE</h1>
+
+    <div class="personInputs">
+        <label for="name1">Person 1 Name: </label>
+        <input type="text" id="name1" placeholder="Enter name">
+        <label for="salary1">Salary PCM (£): </label>
+        <input type="number" id="salary1" placeholder="Enter salary">
+        <label for="percentage1">Contribution (%): </label>
+        <input type="number" id="percentage1" placeholder="Enter percentage">
+    </div>
+
+    <div class="personInputs">
+        <label for="name2">Person 2 Name: </label>
+        <input type="text" id="name2" placeholder="Enter name">
+        <label for="salary2">Salary PCM (£): </label>
+        <input type="number" id="salary2" placeholder="Enter salary">
+        <label for="percentage1">Contribution (%): </label>
+        <input type="number" id="percentage2" placeholder="Enter percentage">
+    </div>
+
+    <div id="billInputs">
+        <label for="bill1">Rent PCM (£): </label>
+        <input type="number" class="billAmount" placeholder="Enter rent">
+    </div>
+
+    <button onclick="addBillInput()">Add Another Bill</button>
+    <button onclick="calculateExpense()">Calculate</button>
+
+    <h2 id="resultTitle">Result:</h2>
+<div id="result" style="display:none;"></div>
+
+    <script>
+        function calculateExpense() {
+                 // Get input values
+            const name1 = document.getElementById('name1').value;
+            const salary1 = parseFloat(document.getElementById('salary1').value);
+            const percentage1 = parseFloat(document.getElementById('percentage1').value);
+
+            const name2 = document.getElementById('name2').value;
+            const salary2 = parseFloat(document.getElementById('salary2').value);
+            const percentage2 = parseFloat(document.getElementById('percentage2').value);
+
+            const billInputs = document.querySelectorAll('.billName');
+            const billAmounts = document.querySelectorAll('.billAmount');
+
+            // Validate input
+            if (isNaN(salary1) || isNaN(percentage1) || isNaN(salary2) || isNaN(percentage2)) {
+                alert('Please enter valid numbers for salaries and percentages');
+                return;
+            }
+
+            let totalBills = 0;
+
+            // Calculate total of all bills
+            for (let i = 0; i < billAmounts.length; i++) {
+                const billAmount = parseFloat(billAmounts[i].value);
+                if (isNaN(billAmount)) {
+                    alert('Please enter valid numbers for bill amounts');
+                    return;
+                }
+                totalBills += billAmount;
+            }
+
+            // Calculate individual contributions based on total bills and percentages
+            const contribution1 = (percentage1 / 100) * totalBills;
+            const contribution2 = (percentage2 / 100) * totalBills;
+
+            // Display result
+            const resultElement = document.getElementById('result');
+            const resultTitleElement = document.getElementById('resultTitle');
+
+            // Calculate remaining amounts from each person's salary
+            const remaining1 = salary1 - contribution1;
+            const remaining2 = salary2 - contribution2;
+
+            document.getElementById('result').innerText = `
+                ${name1} pays: £${contribution1.toFixed(2)}, Remaining: £${remaining1.toFixed(2)}
+                ${name2} pays: £${contribution2.toFixed(2)}, Remaining: £${remaining2.toFixed(2)}
+                `;
+            
+            // Show the result box
+            resultElement.style.display = 'block';
+            resultTitleElement.style.display = 'block';
+}
+
+        
+
+        function addBillInput() {
+            const billInputs = document.getElementById('billInputs');
+
+            // Create new input fields
+            const newBillName = document.createElement('input');
+            newBillName.type = 'text';
+            newBillName.placeholder = 'Enter name';
+            newBillName.classList.add('billName');
+
+            const newBillAmount = document.createElement('input');
+            newBillAmount.type = 'number';
+            newBillAmount.placeholder = 'Enter amount';
+            newBillAmount.classList.add('billAmount');
+
+            // Create new container div for each bill
+            const newBillContainer = document.createElement('div');
+            newBillContainer.classList.add('billInputsContainer');
+
+            // Append new input fields to the container
+            newBillContainer.appendChild(document.createTextNode('Bill ' + ' Name: '));
+            newBillContainer.appendChild(newBillName);
+            newBillContainer.appendChild(document.createTextNode(' Amount (£): '));
+            newBillContainer.appendChild(newBillAmount);
+
+            // Append the new container to the main container
+            billInputs.appendChild(newBillContainer);
+
+
+
+}
+
+
+    </script>
+
+</body>
+</html>
