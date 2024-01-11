@@ -35,13 +35,14 @@
             flex-direction: column;
             align-items: center;
         }
-
-        }
         
-        .top-image {
-            width: 100%;
-            height: auto;
-            display: block;
+        img {
+            max-width: 60%; /* Make sure the image doesn't exceed its container */
+            height: auto; /* Maintain aspect ratio */
+            width: 200px; /* Set the desired width for the image */
+            /* height: 200px; */ /* Optionally, set the height if you want a specific height */
+            align-items: top;    
+                
         }
 
         h1 {
