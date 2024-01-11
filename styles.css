@@ -23,12 +23,7 @@
             z-index: 2; /* Set a lower z-index to place the content on top of the square */
         }
 
-        img {
-            max-width: 60%; /* Make sure the image doesn't exceed its container */
-            height: auto; /* Maintain aspect ratio */
-            width: 200px; /* Set the desired width for the image */
-            /* height: 200px; */ /* Optionally, set the height if you want a specific height */
-        }
+       
 
 
 
@@ -39,6 +34,14 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+
+        }
+        
+        .top-image {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         h1 {
